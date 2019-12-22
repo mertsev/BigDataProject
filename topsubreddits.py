@@ -16,13 +16,13 @@ reddit = praw.Reddit(user_agent='Comment Extraction (by /u/BigDataProject)',
                      username=username, password=password)
 
 #Display the submissions of the last 24 hours in /r/all.
-lastday_subreddit = reddit.subreddit('starwars').top('day',limit=2000)
+lastday_subreddit = reddit.subreddit('all').top('day',limit=2000)
 subreddits = set()
 count = 0;
 for submission in lastday_subreddit:
     subreddits.add(submission.subreddit.display_name)
     count+=1
-    print(submission.title)
+    print(count)
     #print(20*'-')
     #print(submission.subreddit.display_name)
 
