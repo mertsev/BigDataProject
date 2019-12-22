@@ -44,8 +44,10 @@ authors_comment_karma = []
 authors_link_karma = []
 created_date = []
 
+
 i = 0
-subreddit = 'StarWars'
+subreddits = []
+subreddit = 'amd'
 for submission in reddit.subreddit(subreddit).hot(limit=10):
     title = str(submission.title)
     print(str(i) + ' ' + title)
