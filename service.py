@@ -50,9 +50,13 @@ for submission in lastday_subreddit:
 
 subreddits = subreddits + list(subreddits_set)
 
+count = 0 
 for subreddit in subreddits:
     print(subreddit)
+    count += 1
+print(count)
 
+count_subreddit = 0
 for subreddit in subreddits_set:
     data = {}
     titles = []
@@ -67,9 +71,10 @@ for subreddit in subreddits_set:
     authors_comment_karma = []
     authors_link_karma = []
     created_date = []
-    for submission in reddit.subreddit(subreddit).hot(limit=1):
+    i = 0
+    for submission in reddit.subreddit(subreddit).hot(limit=1000):
         try:
-            print("Subreddit: " + subreddit)
+            print(str(count_subreddit) + "/" + str(count) + " Subreddit: " + subreddit)
             title = str(submission.title)
             print(str(i) + ' ' + title)
             titles.append(title)
@@ -93,11 +98,11 @@ for subreddit in subreddits_set:
             # authors_comment_karma.append(redditor.comment_karma)
             # authors_link_karma.append(redditor.link_karma)
             created_date.append(datetime.utcfromtimestamp(submission.created_utc))
+            i += 1
         except: 
             e = sys.exc_info()[0]
             print(e)
-    i = i + 1
-
+    count_subreddit += 1
     # заглавие сабмишена
     data["title"] = titles
     # основной текст
