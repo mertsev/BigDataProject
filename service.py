@@ -103,6 +103,8 @@ for subreddit in subreddits_set:
             e = sys.exc_info()[0]
             print(e)
     count_subreddit += 1
+    # название сабреддита
+    data["subreddit"] = subreddit
     # заглавие сабмишена
     data["title"] = titles
     # основной текст
